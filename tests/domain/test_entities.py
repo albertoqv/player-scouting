@@ -18,3 +18,7 @@ def test_dos_jugadores_con_el_mismo_player_id_son_iguales():
 def test_jugador_rechaza_un_player_id_menor_o_igual_a_0():
     with pytest.raises(ValueError):
        Jugador(0,"Pep","delantero",date(2003, 6, 5))
+
+def test_jugador_rechaza_un_player_id_no_entero():
+    with pytest.raises(ValueError):
+        Jugador(75.5,"Pep","delantero",date(2003, 6, 5))
