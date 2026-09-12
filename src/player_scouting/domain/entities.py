@@ -1,0 +1,8 @@
+class Jugador:
+    def __init__(self,porcentaje):
+        if not isinstance(porcentaje, int):
+             raise ValueError("El porcentaje debe ser un entero")
+        if porcentaje < 0 or porcentaje > 100:
+             raise ValueError("El porcentaje debe ser un valor entre 0 y 100")
+
+        self.porcentaje = porcentaje
