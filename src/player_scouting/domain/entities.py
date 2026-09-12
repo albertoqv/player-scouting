@@ -1,9 +1,12 @@
+from datetime import date, timedelta
 class Jugador:
     def __init__(self,player_id,nombre,posicion,fecha_nacimiento):
         if not isinstance(player_id, int):
             raise ValueError("El player_id debe ser un entero")
         if player_id <= 0:
             raise ValueError("El player_id debe ser un valor mayor que 0")
+        if fecha_nacimiento > date.today():
+            raise ValueError("La fecha no puede ser futura")
         self.player_id = player_id
         self.nombre = nombre
         self.posicion = posicion
