@@ -14,3 +14,7 @@ def test_dos_jugadores_con_el_mismo_player_id_son_iguales():
     b = Jugador(75,"Pep","delantero",date(2003, 6, 5))
 
     assert a == b
+
+def test_jugador_rechaza_un_player_id_menor_o_igual_a_0():
+    with pytest.raises(ValueError):
+       Jugador(0,"Pep","delantero",date(2003, 6, 5))
