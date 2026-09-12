@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import date
 class Jugador:
     def __init__(self,player_id,nombre,posicion,fecha_nacimiento):
         if not isinstance(player_id, int):
