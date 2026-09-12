@@ -16,4 +16,9 @@ def test_puntuacion_similitud_supera_el_rango():
 def test_puntuacion_similitud_es_inferior_al_rango():
      with pytest.raises(ValueError):
         PuntuacionSimilitud(-5)
-        
+
+def test_dos_puntuaciones_con_el_mismo_valor_son_iguales():
+    a = PuntuacionSimilitud(75)
+    b = PuntuacionSimilitud(75)
+
+    assert a == b
