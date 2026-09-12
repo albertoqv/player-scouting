@@ -22,3 +22,5 @@ def test_dos_puntuaciones_con_el_mismo_valor_son_iguales():
     b = PuntuacionSimilitud(75)
 
     assert a == b
+
+    
