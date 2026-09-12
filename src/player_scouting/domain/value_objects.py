@@ -6,3 +6,8 @@ class PuntuacionSimilitud:
              raise ValueError("El porcentaje debe ser un valor entre 0 y 100")
 
         self.porcentaje = porcentaje
+    
+    def __eq__(self,other):
+        
+       return self.porcentaje == other.porcentaje
+
