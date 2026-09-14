@@ -1,8 +1,8 @@
 class Estadisticas:
     def __init__(self,goles,asistencias):
-        if not isinstance(goles, int):
+        if not isinstance(goles, int) or isinstance(goles, bool):
             raise ValueError("Los goles deben ser un entero")
-        if not isinstance(asistencias, int):
+        if not isinstance(asistencias, int) or isinstance(asistencias, bool):
             raise ValueError("Las asistencias deben ser un entero")
         if goles < 0:
             raise ValueError("Los goles deben ser igual o mayor que 0")

@@ -1,6 +1,6 @@
 class PuntuacionSimilitud:
     def __init__(self,porcentaje):
-        if not isinstance(porcentaje, int):
+        if not isinstance(porcentaje, int) or isinstance(porcentaje, bool):
              raise ValueError("El porcentaje debe ser un entero")
         if porcentaje < 0 or porcentaje > 100:
              raise ValueError("El porcentaje debe ser un valor entre 0 y 100")

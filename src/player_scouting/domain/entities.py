@@ -1,7 +1,7 @@
 from datetime import date
 class Jugador:
     def __init__(self,player_id,nombre,posicion,fecha_nacimiento):
-        if not isinstance(player_id, int):
+        if not isinstance(player_id, int) or isinstance(player_id, bool):
             raise ValueError("El player_id debe ser un entero")
         if player_id <= 0:
             raise ValueError("El player_id debe ser un valor mayor que 0")
