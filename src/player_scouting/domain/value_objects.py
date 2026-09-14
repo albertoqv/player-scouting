@@ -1,14 +1,14 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 
+
+@dataclass(frozen=True)
 class SimilarityScore:
-    def __init__(self, percentage: int) -> None:
-        if not isinstance(percentage, int) or isinstance(percentage, bool):
+    percentage: int
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.percentage, int) or isinstance(self.percentage, bool):
             raise ValueError("The percentage must be an integer")
-        if percentage < 0 or percentage > 100:
+        if self.percentage < 0 or self.percentage > 100:
             raise ValueError("The percentage must be a value between 0 and 100")
-
-        self.percentage = percentage
-
-    def __eq__(self, other: SimilarityScore) -> bool:
-        return self.percentage == other.percentage
