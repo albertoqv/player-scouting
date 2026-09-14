@@ -1,12 +1,11 @@
-class PuntuacionSimilitud:
-    def __init__(self, porcentaje: int) -> None:
-        if not isinstance(porcentaje, int) or isinstance(porcentaje, bool):
-            raise ValueError("El porcentaje debe ser un entero")
-        if porcentaje < 0 or porcentaje > 100:
-            raise ValueError("El porcentaje debe ser un valor entre 0 y 100")
+class SimilarityScore:
+    def __init__(self, percentage: int) -> None:
+        if not isinstance(percentage, int) or isinstance(percentage, bool):
+            raise ValueError("The percentage must be an integer")
+        if percentage < 0 or percentage > 100:
+            raise ValueError("The percentage must be a value between 0 and 100")
 
-        self.porcentaje = porcentaje
+        self.percentage = percentage
 
-    def __eq__(self, other: PuntuacionSimilitud) -> bool:
-
-        return self.porcentaje == other.porcentaje
+    def __eq__(self, other: SimilarityScore) -> bool:
+        return self.percentage == other.percentage
