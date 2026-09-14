@@ -1,6 +1,6 @@
 from datetime import date
 class Jugador:
-    def __init__(self,player_id,nombre,posicion,fecha_nacimiento):
+    def __init__(self, player_id: int, nombre: str, posicion: str, fecha_nacimiento: date) -> None:
         if not isinstance(player_id, int) or isinstance(player_id, bool):
             raise ValueError("El player_id debe ser un entero")
         if player_id <= 0:
@@ -11,7 +11,7 @@ class Jugador:
         self.nombre = nombre
         self.posicion = posicion
         self.fecha_nacimiento = fecha_nacimiento
-    
-    def __eq__(self,other):
-        
+
+    def __eq__(self, other: "Jugador") -> bool:
+
        return self.player_id == other.player_id
