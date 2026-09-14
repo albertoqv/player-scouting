@@ -12,7 +12,9 @@ class Comparison:
     player2: Player
     similarity_score: SimilarityScore
 
-    def __eq__(self, other: Comparison) -> bool:
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Comparison):
+            return NotImplemented
         same_order = self.player1 == other.player1 and self.player2 == other.player2
         reversed_order = self.player1 == other.player2 and self.player2 == other.player1
         return (

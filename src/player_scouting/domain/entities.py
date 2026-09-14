@@ -21,7 +21,9 @@ class Player:
         if self.date_of_birth > date.today():
             raise InvalidPlayerError("The date cannot be in the future")
 
-    def __eq__(self, other: Player) -> bool:
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Player):
+            return NotImplemented
         return self.player_id == other.player_id
 
     def __hash__(self) -> int:
