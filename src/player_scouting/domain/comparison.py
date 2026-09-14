@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from player_scouting.domain.entities import Player
 from player_scouting.domain.value_objects import SimilarityScore
 

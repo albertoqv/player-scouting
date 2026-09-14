@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class SimilarityScore:
     def __init__(self, percentage: int) -> None:
         if not isinstance(percentage, int) or isinstance(percentage, bool):
