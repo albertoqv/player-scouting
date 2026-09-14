@@ -3,6 +3,7 @@ from datetime import date, timedelta
 import pytest
 
 from player_scouting.domain.entities import Player
+from player_scouting.domain.exceptions import InvalidPlayerError
 
 manana = date.today() + timedelta(days=1)
 
@@ -23,20 +24,20 @@ def test_dos_jugadores_con_el_mismo_player_id_son_iguales():
 
 
 def test_jugador_rechaza_un_player_id_menor_o_igual_a_0():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidPlayerError):
         Player(0, "Pep", "delantero", date(2003, 6, 5))
 
 
 def test_jugador_rechaza_un_player_id_no_entero():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidPlayerError):
         Player(75.5, "Pep", "delantero", date(2003, 6, 5))
 
 
 def test_jugador_rechaza_una_fecha_nacimiento_futura():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidPlayerError):
         Player(75, "Pep", "delantero", manana)
 
 
 def test_jugador_rechaza_un_player_id_booleano():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidPlayerError):
         Player(True, "Pep", "delantero", date(2003, 6, 5))

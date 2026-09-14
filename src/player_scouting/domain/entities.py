@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date
 
+from player_scouting.domain.exceptions import InvalidPlayerError
+
 
 @dataclass(eq=False)
 class Player:
@@ -13,11 +15,11 @@ class Player:
 
     def __post_init__(self) -> None:
         if not isinstance(self.player_id, int) or isinstance(self.player_id, bool):
-            raise ValueError("The player_id must be an integer")
+            raise InvalidPlayerError("The player_id must be an integer")
         if self.player_id <= 0:
-            raise ValueError("The player_id must be a value greater than 0")
+            raise InvalidPlayerError("The player_id must be a value greater than 0")
         if self.date_of_birth > date.today():
-            raise ValueError("The date cannot be in the future")
+            raise InvalidPlayerError("The date cannot be in the future")
 
     def __eq__(self, other: Player) -> bool:
         return self.player_id == other.player_id

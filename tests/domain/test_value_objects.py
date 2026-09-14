@@ -1,5 +1,6 @@
 import pytest
 
+from player_scouting.domain.exceptions import InvalidSimilarityScoreError
 from player_scouting.domain.value_objects import SimilarityScore
 
 
@@ -9,17 +10,17 @@ def test_puntuacion_similitud_se_crea_con_valor_valido():
 
 
 def test_puntuacion_similitud_rechaza_un_valor_no_entero():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidSimilarityScoreError):
         SimilarityScore(75.5)
 
 
 def test_puntuacion_similitud_supera_el_rango():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidSimilarityScoreError):
         SimilarityScore(120)
 
 
 def test_puntuacion_similitud_es_inferior_al_rango():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidSimilarityScoreError):
         SimilarityScore(-5)
 
 
@@ -31,5 +32,5 @@ def test_dos_puntuaciones_con_el_mismo_valor_son_iguales():
 
 
 def test_puntuacion_similitud_rechaza_un_valor_booleano():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidSimilarityScoreError):
         SimilarityScore(True)
