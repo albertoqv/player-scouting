@@ -7,8 +7,8 @@
 
 Este proyecto nace de la intersección entre dos intereses: el fútbol y la
 ingeniería del software. En lugar de otro CRUD de práctica, el objetivo es
-resolver un problema real —comparar jugadores y encontrar similitudes entre
-ellos a partir de sus estadísticas— aplicando el mismo rigor de diseño y
+resolver un problema real: comparar jugadores y encontrar similitudes entre
+ellos a partir de sus estadísticas, aplicando el mismo rigor de diseño y
 testing que se exige en un equipo de desarrollo profesional: cada pieza
 del dominio, desde la más pequeña, ha sido construida test primero.
 
@@ -32,21 +32,21 @@ Las dependencias siempre apuntan hacia dentro.
 
 ### El dominio, pieza a pieza
 
-- **`SimilarityScore`** (Value Object) — un porcentaje entero de 0 a
+- **`SimilarityScore`** (Value Object): un porcentaje entero de 0 a
   100 que representa cuán parecidos son dos jugadores. Se valida a sí
   mismo: rechaza valores no enteros (incluidos booleanos) y fuera de rango.
-- **`Statistics`** (Value Object) — agrupa las estadísticas de un
+- **`Statistics`** (Value Object): agrupa las estadísticas de un
   jugador (por ahora, goles y asistencias), en vez de pasar números
   sueltos por el sistema. Se valida a sí mismo: enteros no negativos.
-- **`Player`** (Entidad) — su identidad es el `player_id` de StatsBomb,
+- **`Player`** (Entidad): su identidad es el `player_id` de StatsBomb,
   no sus datos: dos jugadores con el mismo `player_id` son "el mismo
   jugador" aunque cambien de nombre o de equipo. Valida que el
   `player_id` sea un entero positivo y que la fecha de nacimiento no sea
   futura.
-- **`Comparison`** (Value Object) — compone dos `Player` y una
+- **`Comparison`** (Value Object): compone dos `Player` y una
   `SimilarityScore`. Es **simétrica**: comparar A con B es lo mismo
   que comparar B con A, si la puntuación coincide.
-- **`SimilarityCalculator`** (Servicio de dominio) — calcula la
+- **`SimilarityCalculator`** (Servicio de dominio): calcula la
   similitud real entre dos jugadores a partir de sus `Statistics`.
   Por cada métrica (goles, asistencias) usa la fórmula
   `1 - |a-b| / max(a,b)` (con el caso especial de valores iguales →
@@ -66,10 +66,10 @@ implementación (`feat:`), siguiendo el convenio de
 ## 📦 Stack tecnológico
 
 - **Python 3.14**, con type hints en toda la capa de dominio
-- **pytest** — testing, incluyendo `pytest.raises` para validar
+- **pytest**: testing, incluyendo `pytest.raises` para validar
   excepciones y `pytest.approx` para comparar resultados decimales
-- **Ruff** — linter y formatter
-- **uv** — gestión de dependencias y de entornos virtuales
+- **Ruff**: linter y formatter
+- **uv**: gestión de dependencias y de entornos virtuales
 - *(próximamente)* un adaptador para [StatsBomb Open Data](https://github.com/statsbomb/open-data)
   como fuente real de estadísticas, una API (FastAPI) y un dashboard
   (Next.js)
@@ -79,11 +79,11 @@ implementación (`feat:`), siguiendo el convenio de
 🟡 En construcción. La capa de Dominio está completa y probada de
 principio a fin:
 
-- [x] `SimilarityScore` — Value Object con validación
-- [x] `Statistics` — Value Object con validación
-- [x] `Player` — Entidad con identidad y reglas de negocio
-- [x] `Comparison` — Value Object simétrico
-- [x] `SimilarityCalculator` — servicio de dominio que calcula la
+- [x] `SimilarityScore`: Value Object con validación
+- [x] `Statistics`: Value Object con validación
+- [x] `Player`: Entidad con identidad y reglas de negocio
+- [x] `Comparison`: Value Object simétrico
+- [x] `SimilarityCalculator`: servicio de dominio que calcula la
       similitud real entre dos jugadores
 - [x] Dominio traducido al inglés (nombres y mensajes de error)
 - [x] Type hints, Ruff y uv integrados en el flujo de desarrollo
@@ -124,10 +124,10 @@ player-scouting/
 ├── tests/
 │   └── domain/
 │       ├── test_value_objects.py
-│       ├── test_estadisticas.py
+│       ├── test_statistics.py
 │       ├── test_entities.py
-│       ├── test_comparacion.py
-│       └── test_calculador_similitud.py
+│       ├── test_comparison.py
+│       └── test_similarity_calculator.py
 ├── .gitignore
 ├── pyproject.toml
 ├── uv.lock
