@@ -20,3 +20,11 @@ def test_estadisticas_goles_es_inferior_al_rango():
 def test_estadisticas_asistencias_es_inferior_al_rango():
     with pytest.raises(ValueError):
         Estadisticas(20,-1)
+
+def test_estadisticas_rechaza_un_valor_de_goles_booleano():
+    with pytest.raises(ValueError):
+        Estadisticas(True,20)
+
+def test_estadisticas_rechaza_un_valor_de_asistencias_booleano():
+    with pytest.raises(ValueError):
+        Estadisticas(15,True)

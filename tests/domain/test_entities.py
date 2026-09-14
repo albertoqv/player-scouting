@@ -28,3 +28,7 @@ def test_jugador_rechaza_un_player_id_no_entero():
 def test_jugador_rechaza_una_fecha_nacimiento_futura():
     with pytest.raises(ValueError):
         Jugador(75,"Pep","delantero",manana)
+
+def test_jugador_rechaza_un_player_id_booleano():
+    with pytest.raises(ValueError):
+        Jugador(True,"Pep","delantero",date(2003, 6, 5))

@@ -23,4 +23,6 @@ def test_dos_puntuaciones_con_el_mismo_valor_son_iguales():
 
     assert a == b
 
-    
+def test_puntuacion_similitud_rechaza_un_valor_booleano():
+    with pytest.raises(ValueError):
+        PuntuacionSimilitud(True)
